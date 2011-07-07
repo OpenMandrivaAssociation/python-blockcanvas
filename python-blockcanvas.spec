@@ -8,6 +8,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source0:	http://www.enthought.com/repo/ets/%{module}-%{version}.tar.gz
+Patch0:		blockcanvas-4.0.0-link.patch
 License:	BSD
 Group:		Development/Python
 Url:		http://code.enthought.com/projects/block_canvas.php
@@ -39,6 +40,7 @@ functionality can be incorporated into other applications.
 
 %prep
 %setup -q -n %{module}-%{version}
+%patch0 -p1
 
 %build
 
