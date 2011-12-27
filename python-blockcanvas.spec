@@ -1,6 +1,6 @@
 %define module	blockcanvas
 %define name 	python-%{module}
-%define version 4.0.0
+%define version 4.0.1
 %define release %mkrel 1
 
 Summary: 	Enthought Tool Suite - blockcanvas project
@@ -11,16 +11,16 @@ Source0:	http://www.enthought.com/repo/ets/%{module}-%{version}.tar.gz
 Patch0:		blockcanvas-4.0.0-link.patch
 License:	BSD
 Group:		Development/Python
-Url:		http://code.enthought.com/projects/block_canvas.php
+Url:		https://github.com/enthought/blockcanvas/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Obsoletes:	python-enthought-blockcanvas
 Requires:	python-configobj
-Requires:	python-apptools >= 4.0.0
-Requires:	python-chaco >= 4.0.0
+Requires:	python-apptools >= 4.0.1
+Requires:	python-chaco >= 4.1.0
 Requires:	python-codetools >= 4.0.0
 Requires:	python-etsdevtools >= 4.0.0
-Requires:	python-scimath >= 4.0.0
-Requires:	python-traitsui >= 4.0.0
+Requires:	python-scimath >= 4.0.1
+Requires:	python-traitsui >= 4.1.0
 Requires:	python-numpy >= 1.1.0
 BuildRequires:	python-setuptools >= 0.6c8
 BuildRequires:	python-sphinx
