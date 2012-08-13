@@ -1,9 +1,13 @@
 %define module	blockcanvas
 %define name 	python-%{module}
 %define version 4.0.1
-%define release %mkrel 1
+%define	rel		2
+%if %mdkversion < 201100
+%define release %mkrel %{rel}
+%else
+%define	release %{rel}
 
-Summary: 	Enthought Tool Suite - blockcanvas project
+Summary: 	Enthought Tool Suite - visual environment for creating simulation experiments
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
@@ -15,12 +19,12 @@ Url:		https://github.com/enthought/blockcanvas/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Obsoletes:	python-enthought-blockcanvas
 Requires:	python-configobj
-Requires:	python-apptools >= 4.0.1
-Requires:	python-chaco >= 4.1.0
+Requires:	python-apptools >= 4.1.0
+Requires:	python-chaco >= 4.2.0
 Requires:	python-codetools >= 4.0.0
 Requires:	python-etsdevtools >= 4.0.0
-Requires:	python-scimath >= 4.0.1
-Requires:	python-traitsui >= 4.1.0
+Requires:	python-scimath >= 4.1.0
+Requires:	python-traitsui >= 4.2.0
 Requires:	python-numpy >= 1.1.0
 BuildRequires:	python-setuptools >= 0.6c8
 BuildRequires:	python-sphinx
@@ -52,11 +56,12 @@ popd
 %install
 %__rm -rf %{buildroot}
 
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
 
 %clean
 %__rm -rf %{buildroot}
 
-%files -f FILE_LIST
+%files
 %defattr(-,root,root)
 %doc *.txt *.rst docs/build/html/
+%py_platsitedir/%{module}*
