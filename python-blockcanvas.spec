@@ -6,6 +6,7 @@
 %define release %mkrel %{rel}
 %else
 %define	release %{rel}
+%endif
 
 Summary: 	Enthought Tool Suite - visual environment for creating simulation experiments
 Name:		%{name}
@@ -27,6 +28,7 @@ Requires:	python-scimath >= 4.1.0
 Requires:	python-traitsui >= 4.2.0
 Requires:	python-numpy >= 1.1.0
 BuildRequires:	python-setuptools >= 0.6c8
+BuildRequires:	python-setupdocs >= 1.0.5 
 BuildRequires:	python-sphinx
 
 %description
@@ -47,15 +49,11 @@ functionality can be incorporated into other applications.
 %patch0 -p1
 
 %build
-
 %__python setup.py build
-pushd docs
-make html
-popd
+%__python setup.py build_docs
 
 %install
 %__rm -rf %{buildroot}
-
 PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
 
 %clean
@@ -63,5 +61,5 @@ PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc *.txt *.rst docs/build/html/
+%doc *.txt *.rst build/docs/html/
 %py_platsitedir/%{module}*
