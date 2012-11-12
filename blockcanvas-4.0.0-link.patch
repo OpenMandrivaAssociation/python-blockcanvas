@@ -1,0 +1,10 @@
+--- blockcanvas-4.0.0/setup.py.bak	2011-07-07 14:55:46.914839550 -0400
++++ blockcanvas-4.0.0/setup.py	2011-07-07 14:56:26.499599936 -0400
+@@ -15,6 +15,7 @@
+         'blockcanvas/cobyla2c/cobyla.c',
+         'blockcanvas/cobyla2c/moduleCobyla.c'
+         ],
++    libraries=['m'],
+     )
+ 
+ greenlet = Extension(
