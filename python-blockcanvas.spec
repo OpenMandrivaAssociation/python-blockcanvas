@@ -1,34 +1,24 @@
 %define module	blockcanvas
-%define name 	python-%{module}
-%define version 4.0.1
-%define	rel		2
-%if %mdkversion < 201100
-%define release %mkrel %{rel}
-%else
-%define	release %{rel}
-%endif
 
-Summary: 	Enthought Tool Suite - visual environment for creating simulation experiments
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Summary: 	Enthought Tool Suite - blockcanvas project
+Name:		python-%{module}
+Version:	4.0.1
+Release:	2
 Source0:	http://www.enthought.com/repo/ets/%{module}-%{version}.tar.gz
 Patch0:		blockcanvas-4.0.0-link.patch
 License:	BSD
 Group:		Development/Python
 Url:		https://github.com/enthought/blockcanvas/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Obsoletes:	python-enthought-blockcanvas
 Requires:	python-configobj
-Requires:	python-apptools >= 4.1.0
-Requires:	python-chaco >= 4.2.0
+Requires:	python-apptools >= 4.0.1
+Requires:	python-chaco >= 4.1.0
 Requires:	python-codetools >= 4.0.0
 Requires:	python-etsdevtools >= 4.0.0
-Requires:	python-scimath >= 4.1.0
-Requires:	python-traitsui >= 4.2.0
+Requires:	python-scimath >= 4.0.1
+Requires:	python-traitsui >= 4.1.0
 Requires:	python-numpy >= 1.1.0
 BuildRequires:	python-setuptools >= 0.6c8
-BuildRequires:	python-setupdocs >= 1.0.5 
 BuildRequires:	python-sphinx
 
 %description
@@ -49,17 +39,27 @@ functionality can be incorporated into other applications.
 %patch0 -p1
 
 %build
+
 %__python setup.py build
-%__python setup.py build_docs
+pushd docs
+make html
+popd
 
 %install
-%__rm -rf %{buildroot}
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
+sed -i 's/.*egg-info$//' FILE_LIST
 
-%clean
-%__rm -rf %{buildroot}
+%files -f FILE_LIST
+%doc *.txt *.rst docs/build/html/
 
-%files
-%defattr(-,root,root)
-%doc *.txt *.rst build/docs/html/
-%py_platsitedir/%{module}*
+
+%changelog
+* Tue Dec 27 2011 Lev Givon <lev@mandriva.org> 4.0.1-1
++ Revision: 745665
+- Update to 4.0.1.
+
+* Thu Jul 07 2011 Lev Givon <lev@mandriva.org> 4.0.0-1
++ Revision: 689219
+- import python-blockcanvas
+
+
