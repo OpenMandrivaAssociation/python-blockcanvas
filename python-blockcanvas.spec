@@ -2,9 +2,9 @@
 
 Summary: 	Enthought Tool Suite - blockcanvas project
 Name:		python-%{module}
-Version:	4.0.1
-Release:	2
-Source0:	http://www.enthought.com/repo/ets/%{module}-%{version}.tar.gz
+Version:	4.0.3
+Release:	1
+Source0:	https://www.enthought.com/repo/ets/blockcanvas-%{version}.tar.gz
 Patch0:		blockcanvas-4.0.0-link.patch
 License:	BSD
 Group:		Development/Python
@@ -61,5 +61,6 @@ sed -i 's/.*egg-info$//' FILE_LIST
 * Thu Jul 07 2011 Lev Givon <lev@mandriva.org> 4.0.0-1
 + Revision: 689219
 - import python-blockcanvas
+
 
 

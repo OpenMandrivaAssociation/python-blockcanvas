@@ -1,2 +1,4 @@
+removed_sources:
+  blockcanvas-4.0.1.tar.gz: 90003d92d77f3c7254ea1f5d34c0d00d527dcb77
 sources:
-  "blockcanvas-4.0.1.tar.gz": 90003d92d77f3c7254ea1f5d34c0d00d527dcb77
+  blockcanvas-4.0.3.tar.gz: 9725210e8774c6a5d6350a1b1c86336194095eeb
